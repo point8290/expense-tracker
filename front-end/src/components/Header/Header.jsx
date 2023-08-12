@@ -8,7 +8,8 @@ const Header = (props) => {
   const globalContext = useContext(AppContext);
 
   const toggleSidebar = (event) => {
-    globalContext.updateAppContextState({ type: "toggleSidebar" });
+    event.preventDefault();
+    globalContext.setIsSidebarOpen(!globalContext.isSidebarOpen);
   };
 
   return (
@@ -24,7 +25,7 @@ const Header = (props) => {
       </div>
       <div className="links">
         <Link to="/login"> Login </Link>
-        <Link to="/Register"> Register </Link>
+        <Link to="/register"> Register </Link>
       </div>
     </header>
   );

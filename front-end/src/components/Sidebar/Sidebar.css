@@ -1,0 +1,34 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  background-color: rebeccapurple;
+  height: 100rem;
+}
+aside a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  height: 20px;
+  width: 80%;
+  margin: 10px;
+}
+
+aside a p {
+  color: #fff;
+  font-weight: 200;
+  font-family: "Roboto";
+  padding-left: 6px;
+}
+.sidebarOpen {
+  width: 20%;
+}
+.sidebarClose {
+  width: 40px;
+}
+aside.sidebarOpen a p {
+  display: block;
+}
+
+aside.sidebarClose a p {
+  display: none;
+}

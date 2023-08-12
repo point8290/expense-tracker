@@ -13,10 +13,11 @@ function Main() {
   return (
     <div className="mainContainer">
       <Sidebar isSidebarOpen={globalContext.isSidebarOpen} />
-      <div>
+      <div className="contentAreaContainer">
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>

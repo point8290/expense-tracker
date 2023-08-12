@@ -1,14 +1,13 @@
-import './App.css';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import Note from './components/Expense/Expense';
-
+import "./App.css";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
     <div>
       <Header />
-      <Note title="Note Title" content="Note Content" />
+      <Main />
       <Footer />
     </div>
   );

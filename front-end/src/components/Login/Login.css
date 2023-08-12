@@ -1,20 +1,21 @@
-.loginForm{
-    padding:20px;
-    height: 300px;
-    width: 300px;
-    text-align: center;
-    margin: auto;
+.loginForm {
+  padding: 20px;
+  height: fit-content;
+  width: 350px;
+  text-align: center;
+  margin: auto;
 }
-.formTitle{
-    color: #fff;
-    text-align: center;
-    font-weight: 600;
-    font-size: larger;
+.formTitle {
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+  font-size: larger;
+  margin-bottom: 20px;
 }
-.forgotPasswordLink{
-    padding: 8px 0px;
+.formLink {
+  padding: 8px 0px;
 }
-.forgotPasswordLink a{
-    text-decoration: none;
-    color: blue;
+.formLink a {
+  text-decoration: none;
+  color: blue;
 }

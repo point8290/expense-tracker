@@ -1,4 +1,6 @@
 const express = require("express");
+const Expense = require("../../models/expense.model");
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
@@ -41,3 +43,4 @@ router.post("/save-expense", async (req, res) => {
     });
   }
 });
+module.exports = router;

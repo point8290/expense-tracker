@@ -2,10 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
-const User = require("./models/user.model");
-const Expense = require("./models/expense.model");
-const bcrypt = require("bcryptjs");
 const userRoutes = require("./api/user/user");
 const expenseRoutes = require("./api/expense/expense");
 require("dotenv").config();
@@ -18,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // ****************** DB Connection ***************************
-mongoose.connect("mongodb://127.0.0.1:27017/expense-tracker");
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 const db = mongoose.connection;
 db.once("open", (error) => {
   if (error) {

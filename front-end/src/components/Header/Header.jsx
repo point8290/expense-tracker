@@ -11,7 +11,7 @@ const Header = (props) => {
     event.preventDefault();
     globalContext.setIsSidebarOpen(!globalContext.isSidebarOpen);
   };
-
+  const linkClassName = `${globalContext.isLoggedIn ? "hideLinks" : ""}`;
   return (
     <header className="header">
       <div>
@@ -23,7 +23,7 @@ const Header = (props) => {
       <div>
         <h1>Track Your Expenses</h1>
       </div>
-      <div className="links">
+      <div className={linkClassName}>
         <Link to="/login"> Login </Link>
         <Link to="/register"> Register </Link>
       </div>

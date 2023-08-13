@@ -1,14 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Form from "../Form/Form";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/user";
 import Button from "../Button/Button";
-import { AppContext } from "../../AppContextProvider";
 function Login() {
-  const globalContext = useContext(AppContext);
-
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -40,7 +37,6 @@ function Login() {
     const data = response.data;
     if (data.status === "ok" && data.user) {
       localStorage.setItem("token", data.user);
-      globalContext.setIsLoggedIn(true);
       setUser({
         email: "",
         password: "",

@@ -24,3 +24,11 @@ header a {
 .hideLinks a {
   display: none;
 }
+
+.hideLinks button {
+  display: none;
+}
+.logoutButton {
+  padding: 4px;
+  background-color: #0084cc;
+}

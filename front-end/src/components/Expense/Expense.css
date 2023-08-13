@@ -1,21 +1,25 @@
+.expenseContainer {
+  width: 100%;
+  text-align: center;
+}
 .expense {
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
-    width: 240px;
-    margin: 16px;
-    float: left;
+  background: #0084cc;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  margin: 16px auto;
+  width: 400px;
+  color: #fff;
 }
 
 .expense h1 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
+  font-size: 1.1em;
+  margin-bottom: 6px;
 }
 
 .expense p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

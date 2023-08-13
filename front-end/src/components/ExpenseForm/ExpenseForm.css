@@ -1,0 +1,17 @@
+.expenseForm {
+  padding: 20px;
+  height: fit-content;
+  width: 350px;
+  text-align: center;
+  margin: auto;
+}
+.formTitle {
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+  font-size: larger;
+  margin-bottom: 20px;
+}
+.submitButton {
+  margin-top: 6px;
+}

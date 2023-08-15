@@ -43,19 +43,25 @@ function ExpenseForm(props) {
 
   const onAddNewExpense = async (event) => {
     event.preventDefault();
-
-    const response = await api.post("api/expense/save-expense", newExpense);
-    const data = response.data;
-    if (data.status === "ok") {
-      setNewExpense({
-        title: "",
-        content: "",
-        amount: "",
-        date: "",
-      });
-      navigate("/expense-list");
-    } else {
-      alert(data.error);
+    try {
+      const response = await api.post("api/expense/save-expense", newExpense);
+      const data = response.data;
+      if (data.status === "ok") {
+        setNewExpense({
+          title: "",
+          content: "",
+          amount: "",
+          date: "",
+        });
+        navigate("/expense-list");
+      } else {
+        if (data.error === "Invalid Token") {
+          alert("Please Login");
+          navigate("/Login");
+        }
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

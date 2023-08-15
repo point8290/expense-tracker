@@ -50,17 +50,21 @@ function Register(props) {
 
   const onRegister = async (event) => {
     event.preventDefault();
-    const response = await api.post("api/user/register", newUser);
-    const data = response.data;
-    if (data.status === "ok") {
-      setNewUser({
-        name: "",
-        email: "",
-        mobile: "",
-        password: "",
-        confirmPassword: "",
-      });
-      navigate("/Login");
+    try {
+      const response = await api.post("api/user/register", newUser);
+      const data = response.data;
+      if (data.status === "ok") {
+        setNewUser({
+          name: "",
+          email: "",
+          mobile: "",
+          password: "",
+          confirmPassword: "",
+        });
+        navigate("/Login");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

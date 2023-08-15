@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Form from "../Form/Form";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/user";
 import Button from "../Button/Button";
+import { AppContext } from "../../AppContextProvider";
 function Login() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const globalContext = useContext(AppContext);
+
   const navigate = useNavigate();
 
   const updateUser = (key, value) => {
@@ -32,16 +35,22 @@ function Login() {
   };
   const onLogin = async (event) => {
     event.preventDefault();
+    try {
+      const response = await api.post("api/user/login", user);
+      const data = response.data;
+      if (data.status === "ok" && data.user) {
+        localStorage.setItem("token", data.user);
+        globalContext.setIsUserLoggedIn(true);
+        globalContext.setLoggedInUser(data.user);
 
-    const response = await api.post("api/user/login", user);
-    const data = response.data;
-    if (data.status === "ok" && data.user) {
-      localStorage.setItem("token", data.user);
-      setUser({
-        email: "",
-        password: "",
-      });
-      navigate("/");
+        setUser({
+          email: "",
+          password: "",
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
   return (

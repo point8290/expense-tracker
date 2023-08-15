@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/get-all-expenses", async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
+    console.log("token", token);
     const decoded = jwt.verify(token, "dumdumdum");
     const userEmail = decoded.email;
     const expenses = await Expense.find({
@@ -24,10 +25,18 @@ router.get("/get-all-expenses", async (req, res) => {
 
 router.post("/save-expense", async (req, res) => {
   const token = req.headers["x-access-token"];
+  let decoded;
   try {
-    const decoded = jwt.verify(token, "dumdumdum");
+    decoded = jwt.verify(token, "dumdumdum");
+  } catch (err) {
+    res.send({
+      status: "error",
+      error: "Invalid Token",
+    });
+  }
+  try {
     const userEmail = decoded.email;
-    const user = await Expense.create({
+    const expense = await Expense.create({
       title: req.body.title,
       content: req.body.content,
       date: req.body.date,

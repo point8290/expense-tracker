@@ -9,6 +9,7 @@ import { AppContext } from "../../AppContextProvider";
 import { useContext } from "react";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import ExpenseList from "../ExpenseList/ExpenseList";
+import AuthenticatedRoutes from "../../utils/AuthenticatedRoutes";
 function Main() {
   const globalContext = useContext(AppContext);
 
@@ -21,8 +22,10 @@ function Main() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/add-expense" element={<ExpenseForm />} />
-          <Route path="/expense-list" element={<ExpenseList />} />
+          <Route element={<AuthenticatedRoutes />}>
+            <Route path="/add-expense" element={<ExpenseForm />} />
+            <Route path="/expense-list" element={<ExpenseList />} />
+          </Route>
         </Routes>
       </div>
     </div>

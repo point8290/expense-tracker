@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "../Form/Form";
 import Button from "../Button/Button";
 import api from "../../api/expense";
+import { getAuth } from "../../utils/auth";
 import "./ExpenseForm.css";
 import { useNavigate } from "react-router-dom";
 function ExpenseForm(props) {
@@ -44,7 +45,13 @@ function ExpenseForm(props) {
   const onAddNewExpense = async (event) => {
     event.preventDefault();
     try {
-      const response = await api.post("api/expense/save-expense", newExpense);
+      const headers = {
+        "Content-Type": "application/json",
+        "x-access-token": getAuth(),
+      };
+      const response = await api.post("api/expense/save-expense", newExpense, {
+        headers,
+      });
       const data = response.data;
       if (data.status === "ok") {
         setNewExpense({

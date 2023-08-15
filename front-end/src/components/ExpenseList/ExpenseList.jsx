@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api/expense";
 import Expense from "../Expense/Expense";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { getAuth } from "../../utils/auth";
+
 function ExpenseList() {
   const [expenseList, setExpenseList] = useState([]);
-  const navigate = useNavigate();
+
   useEffect(() => {
-    const getExpenses = async () => {
-      return await api.get("api/expense/get-all-expenses");
+    const headers = {
+      "Content-Type": "application/json",
+      "x-access-token": getAuth(),
     };
+
+    const getExpenses = async () => {
+      return await api.get("api/expense/get-all-expenses", { headers });
+    };
+
     try {
       getExpenses()
         .then((response) => {
@@ -19,7 +27,7 @@ function ExpenseList() {
           } else {
             if (data.error === "Invalid Token") {
               alert("Please Login");
-              navigate("/Login");
+              <Navigate to="/Login" />;
             }
           }
           setExpenseList(expenses);
@@ -35,7 +43,7 @@ function ExpenseList() {
   return (
     <div>
       {expenseList.map((expense, index) => (
-        <Expense data={expense} />
+        <Expense key={expense._id} data={expense} />
       ))}
     </div>
   );

@@ -33,7 +33,7 @@ db.on("error", (error) => {
 app.use("/api/user", userRoutes);
 app.use("/api/expense", expenseRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 6010;
 app.listen(process.env.PORT, () => {
   console.log(`server started on ${process.env.PORT}`);
 });

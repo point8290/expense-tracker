@@ -7,13 +7,11 @@ const router = express.Router();
 router.get("/get-all-expenses", async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
-    console.log("token", token);
     const decoded = jwt.verify(token, "dumdumdum");
     const userEmail = decoded.email;
     const expenses = await Expense.find({
       userid: userEmail,
     });
-    console.log("Expesnes", expenses);
     res.json({ status: "ok", expenses: expenses });
   } catch (err) {
     res.send({

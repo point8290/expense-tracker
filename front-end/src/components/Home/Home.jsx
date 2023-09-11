@@ -75,7 +75,7 @@ function Home() {
                 fontSize: "25px",
                 color: "#ddd",
               }}
-              href="/expense-list"
+              href="/register"
             >
               Create a new Account
             </a>

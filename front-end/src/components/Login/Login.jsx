@@ -47,7 +47,7 @@ function Login() {
           email: "",
           password: "",
         });
-        navigate("/");
+        navigate("/expense-list");
       }
     } catch (error) {
       console.error(error);
@@ -78,10 +78,8 @@ function Login() {
           }}
         />
       </div>
-      <div className="formLink">
-        <Link to="/forgot-passowrd"> Forgot password? </Link>
-      </div>
-      <div onClick={onLogin}>
+
+      <div onClick={onLogin} style={{ marginTop: "15px" }}>
         <Button label="Login" />
       </div>
     </Form>

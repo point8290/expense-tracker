@@ -6,6 +6,7 @@ import { getAuth } from "../../utils/auth";
 
 function ExpenseList() {
   const [expenseList, setExpenseList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const headers = {
@@ -14,6 +15,8 @@ function ExpenseList() {
     };
 
     const getExpenses = async () => {
+      setExpenseList([]);
+      setLoading(true);
       return await api.get("api/expense/get-all-expenses", { headers });
     };
 
@@ -31,6 +34,7 @@ function ExpenseList() {
             }
           }
           setExpenseList(expenses);
+          setLoading(false);
         })
         .catch((error) => {
           alert(error);
@@ -42,9 +46,24 @@ function ExpenseList() {
 
   return (
     <div>
-      {expenseList.map((expense, index) => (
-        <Expense key={expense._id} data={expense} />
-      ))}
+      {loading && (
+        <div
+          style={{ textAlign: "center", marginTop: "30px", fontSize: "24px" }}
+        >
+          <strong>Loading your expense ...</strong>
+        </div>
+      )}
+      {!loading && expenseList.length === 0 && (
+        <div
+          style={{ textAlign: "center", marginTop: "30px", fontSize: "24px" }}
+        >
+          <strong>No expense added yet</strong>
+        </div>
+      )}
+      {expenseList.length > 0 &&
+        expenseList.map((expense, index) => (
+          <Expense key={expense._id} data={expense} />
+        ))}
     </div>
   );
 }

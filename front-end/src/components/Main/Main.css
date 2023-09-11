@@ -1,7 +1,7 @@
-.mainContainer{
-    display: flex;
-    flex-direction: row;
+.mainContainer {
+  display: flex;
+  flex-direction: row;
 }
-.contentAreaContainer{
-    width:100%;
+.contentAreaContainer {
+  width: 100%;
 }

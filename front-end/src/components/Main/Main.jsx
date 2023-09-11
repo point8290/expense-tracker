@@ -20,7 +20,6 @@ function Main() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/forgot-password" element={<Login />} /> */}
           <Route path="/register" element={<Register />} />
           <Route element={<AuthenticatedRoutes />}>
             <Route path="/add-expense" element={<ExpenseForm />} />

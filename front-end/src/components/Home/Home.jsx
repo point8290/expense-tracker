@@ -2,10 +2,10 @@ import React from "react";
 import "./Home.css";
 import { AppContext } from "../../AppContextProvider";
 import { useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Home() {
   const globalContext = useContext(AppContext);
-
+  const navigate = useNavigate();
   const containerStyle = {
     backgroundImage: `url(${process.env.PUBLIC_URL}/back-ground.png)`,
     backgroundSize: "cover",
@@ -39,59 +39,71 @@ function Home() {
       <div style={{ textAlign: "center", paddingTop: "10vh" }}>
         <div style={{ padding: "20px", textDecoration: "none" }}>
           {!globalContext.isUserLoggedIn && (
-            <a
+            <p
               style={{
                 textDecoration: "none",
                 fontWeight: "bold",
                 fontSize: "25px",
                 color: "#ddd",
+                cursor: "pointer",
               }}
-              href="/login"
+              onClick={(e) => {
+                navigate("/login");
+              }}
             >
               Login
-            </a>
+            </p>
           )}
           {globalContext.isUserLoggedIn && (
-            <a
+            <p
               style={{
                 textDecoration: "none",
                 fontWeight: "bold",
                 fontSize: "25px",
                 color: "#ddd",
+                cursor: "pointer",
               }}
-              href="/add-expense"
+              onClick={(e) => {
+                navigate("/add-expense");
+              }}
             >
               Add New Expenses
-            </a>
+            </p>
           )}
         </div>
         <div style={{ padding: "10px", fontSize: "15px" }}>Or</div>
         <div style={{ padding: "10px" }}>
           {!globalContext.isUserLoggedIn && (
-            <a
+            <p
               style={{
                 textDecoration: "none",
                 fontWeight: "bold",
                 fontSize: "25px",
                 color: "#ddd",
+                cursor: "pointer",
               }}
-              href="/register"
+              onClick={(e) => {
+                navigate("/register");
+              }}
             >
               Create a new Account
-            </a>
+            </p>
           )}
           {globalContext.isUserLoggedIn && (
-            <a
+            <p
               style={{
                 textDecoration: "none",
                 fontWeight: "bold",
                 fontSize: "25px",
                 color: "#ddd",
+                cursor: "pointer",
               }}
-              href="/expense-list"
+              onClick={(e) => {
+                navigate("/expense-list");
+              }}
             >
               See Your Expense
-            </a>
+            </p>
           )}
         </div>
       </div>
